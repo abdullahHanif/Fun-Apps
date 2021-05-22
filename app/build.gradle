@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-android-extensions'
     id 'kotlin-kapt'
+    id "dagger.hilt.android.plugin"
 }
 
 apply {
@@ -27,11 +28,15 @@ android {
 
     buildTypes {
         release {
+            debuggable false
+            shrinkResources true
             minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
         debug {
+            debuggable true
+            shrinkResources false
             minifyEnabled false
         }
     }
@@ -57,6 +62,7 @@ android {
 dependencies {
     /*core module*/
     implementation project(':data')
+    implementation project(':domain')
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.core:core-ktx:$core_ktx"
@@ -101,11 +107,19 @@ dependencies {
     implementation "com.intuit.ssp:ssp-android:$ssp_android"
     implementation "com.intuit.sdp:sdp-android:$sdp_android"
 
-    /*dagger*/
-    implementation "com.google.dagger:dagger:$dagger"
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger"
+    /*dagger-hilt*/
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     testImplementation "junit:junit:$junit"
     androidTestImplementation "androidx.test.ext:junit:$junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
+
+    // For local unit tests
+    testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
+    testAnnotationProcessor "com.google.dagger:hilt-compiler:$hilt_version"
+}
+
+kapt {
+    correctErrorTypes true
 }

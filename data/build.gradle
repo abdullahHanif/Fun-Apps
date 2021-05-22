@@ -53,13 +53,11 @@ android {
 
 dependencies {
 
+    implementation project(":domain")
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "androidx.appcompat:appcompat:$app_compat"
     implementation "androidx.core:core-ktx:$core_ktx"
-
-    testImplementation "junit:junit:$junit"
-    androidTestImplementation "androidx.test.ext:junit:$junit"
-    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 
    /*retrofit*/
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
@@ -69,11 +67,15 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines"
 
-    /*dagger*/
-    implementation "com.google.dagger:dagger:$dagger"
-    annotationProcessor "com.google.dagger:dagger-compiler:$dagger"
+    /*injection*/
+    implementation "javax.inject:javax.inject:$javax_inject_version"
+
     /*room*/
     implementation "androidx.room:room-runtime:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
+
+    testImplementation "junit:junit:$junit"
+    androidTestImplementation "androidx.test.ext:junit:$junit"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 }
