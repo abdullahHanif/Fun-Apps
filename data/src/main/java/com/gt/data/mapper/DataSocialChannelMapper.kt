@@ -1,8 +1,14 @@
 package com.gt.data.mapper
 
-object DataSocialChannelMapper{
+import com.gt.data.model.SocialChannelData
 
-    fun mapDataSocialEntity(){
+object DataSocialChannelMapper : Mapper<SocialChannelData, String> {
 
+    override fun fromDataToDomainType(from: String): SocialChannelData {
+        return SocialChannelData()
+    }
+
+    override fun fromDomainToDataType(to: SocialChannelData): String {
+        return ""
     }
 }

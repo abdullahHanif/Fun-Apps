@@ -4,13 +4,13 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import com.gt.data.db.entity.SocialChannelEntity
+import com.gt.data.model.SocialChannelData
 
 @Dao
 interface SocialChannelDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insert(socialChannel: SocialChannelEntity): Long
+    suspend fun insert(socialChannel: SocialChannelData): Long
 
-    @Query("SELECT * FROM SocialChannelEntity")
-    suspend fun get(): List<SocialChannelEntity>
+    @Query("SELECT * FROM SocialChannelData")
+    suspend fun getAll(): SocialChannelData
 }
