@@ -117,6 +117,9 @@ dependencies {
     androidTestImplementation "androidx.test.ext:junit:$junit"
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso"
 
+    //av loading
+    implementation "com.wang.avi:library:$loader_version"
+
     // For local unit tests
     testImplementation "com.google.dagger:hilt-android-testing:$hilt_version"
     testAnnotationProcessor "com.google.dagger:hilt-compiler:$hilt_version"

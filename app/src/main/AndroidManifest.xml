@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:name = ".AppClass"
         android:theme="@style/Theme.FunApps">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.view.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

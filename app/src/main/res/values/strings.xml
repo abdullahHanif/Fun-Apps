@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Fun Apps</string>
+    <string name="social">Social</string>
+    <string name="channel">Channel</string>
 </resources>
