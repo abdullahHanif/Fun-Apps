@@ -47,5 +47,8 @@ ext {
     javax_inject_version = "1"
 
     hilt_version = "2.35.1"
+
     logging_interceptor = "3.12.1"
+
+    loader_version= "2.1.3"
 }
