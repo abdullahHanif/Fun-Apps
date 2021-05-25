@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.gt.funapps.components.LoadingConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/root_view"
-    android:background="@android:color/holo_blue_dark"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout>
 
-</com.gt.funapps.components.LoadingConstraintLayout>
+    <com.gt.funapps.components.LoadingConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/root_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_channel_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </com.gt.funapps.components.LoadingConstraintLayout>
+</layout>

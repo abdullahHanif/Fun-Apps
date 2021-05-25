@@ -50,13 +50,13 @@ class HomeActivity : BaseActivity() {
 
         //adding swipe for screen on tab selection
         binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
-            override fun onTabReselected(tab: TabLayout.Tab?) {
-                binding.viewpager.currentItem = tab?.position ?: 0
-            }
+            override fun onTabReselected(tab: TabLayout.Tab?) {}
 
             override fun onTabUnselected(tab: TabLayout.Tab?) {}
 
-            override fun onTabSelected(tab: TabLayout.Tab?) {}
+            override fun onTabSelected(tab: TabLayout.Tab?) {
+                binding.viewpager.currentItem = tab?.position ?: 0
+            }
 
         })
 

@@ -2,22 +2,28 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
 
     <data>
-        <!--<variable
+
+        <import type="android.view.View" />
+
+        <variable
+            name="model"
+            type="com.gt.domain.entity.SocialItemEntity" />
+
+        <variable
             name="viewmodel"
-            type="" />-->
+            type="com.gt.funapps.view.viewmodel.FragmentSocialViewModel" />
     </data>
 
-    <com.gt.funapps.components.LoadingConstraintLayout
-        xmlns:cardview="http://schemas.android.com/apk/res-auto"
+    <com.gt.funapps.components.LoadingConstraintLayout xmlns:cardview="http://schemas.android.com/apk/res-auto"
         android:id="@+id/root_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_16sdp">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_card"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="16dp"
             android:background="@android:color/transparent"
             cardview:cardCornerRadius="8dp"
             cardview:cardElevation="2dp"

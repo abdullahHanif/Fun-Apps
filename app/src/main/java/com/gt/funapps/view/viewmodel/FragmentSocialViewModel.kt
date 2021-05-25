@@ -1,17 +1,16 @@
 package com.gt.funapps.view.viewmodel
 
 import androidx.lifecycle.ViewModel
+import com.gt.domain.entity.SocialItemEntity
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
 class FragmentSocialViewModel @Inject constructor() : ViewModel() {
+    var list: MutableList<SocialItemEntity> = mutableListOf()
 
-    /*
-   val flowable: LiveData<String> =
-    dataSource.fetch()
-    .onStart { emit(LOADING_STRING) }
-   .asLiveData()
+    fun onItemClicked(any: Any) {
+        TODO("Not yet implemented")
+    }
 
- */
 }

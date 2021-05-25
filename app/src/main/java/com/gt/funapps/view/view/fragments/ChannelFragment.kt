@@ -4,20 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
+import androidx.fragment.app.viewModels
 import com.gt.funapps.R
 import com.gt.funapps.base.BaseFragment
+import com.gt.funapps.databinding.FragmentChannelBinding
+import com.gt.funapps.view.viewmodel.FragmentChannelViewModel
 
 class ChannelFragment : BaseFragment() {
+    lateinit var binding: FragmentChannelBinding
+    val viewmodel: FragmentChannelViewModel by viewModels()
+
     override fun showLoader() {
-        TODO("Not yet implemented")
+        binding.rootView.showLoader()
     }
 
     override fun hideLoader() {
-        TODO("Not yet implemented")
-    }
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+        binding.rootView.hideLoader()
     }
 
     override fun onCreateView(
@@ -25,6 +28,7 @@ class ChannelFragment : BaseFragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_channel, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_channel, container, false)
+        return binding.root
     }
 }
