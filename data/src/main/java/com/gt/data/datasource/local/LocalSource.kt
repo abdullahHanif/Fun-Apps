@@ -4,7 +4,7 @@ import android.content.Context
 import com.gt.data.db.FunAppsDatabase
 import javax.inject.Inject
 
-abstract class LocalSource @Inject constructor() {
+abstract class LocalSource constructor() {
     @Inject
     lateinit var db: FunAppsDatabase
     @Inject
