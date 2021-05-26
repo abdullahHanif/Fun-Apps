@@ -12,12 +12,21 @@ class SocialChannelRepositoryImpl @Inject constructor(
     private val remoteDataSource: SocialChannelRemoteDataSource
 ) : SocialChannelRepository {
 
-    override suspend fun getSocialChannels(): Result<SocialChannelEntity> = remoteDataSource.getSocialChannelList()
+    override suspend fun getSocialChannels(): Result<SocialChannelEntity> {
+        val data = remoteDataSource.getSocialChannelList()
 
-    override suspend fun getSavedSocialChannels(): Result<Any> = localDataSource.getSocialChannelList()
+        when (data) {
+            is Result.Success -> {
+                localDataSource.deleteAll()
+                localDataSource.saveAll(data.data!!)
+            }
+        }
+
+        return localDataSource.getSocialChannelList()
+    }
 
     override suspend fun deleteSavedSocialChannels() {
-        TODO("Not yet implemented")
+        localDataSource.deleteAll()
     }
 
 }

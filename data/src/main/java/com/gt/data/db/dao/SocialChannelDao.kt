@@ -13,4 +13,7 @@ interface SocialChannelDao {
 
     @Query("SELECT * FROM SocialChannelData")
     suspend fun getAll(): SocialChannelData
+
+    @Query("Delete FROM SocialChannelData")
+    suspend fun truncate()
 }

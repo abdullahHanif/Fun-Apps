@@ -1,9 +1,12 @@
 package com.gt.funapps.view.view.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -64,11 +67,24 @@ class ChannelFragment : BaseFragment() {
                     is ChannelListEvent.HideLoader -> {
                         hideLoader()
                     }
+
+                    is ChannelListEvent.OpenItem -> {
+                        if (it.channelItemEntity.isPremiumItem) {
+                            Toast.makeText(context, "Sorry this item is premium", Toast.LENGTH_LONG)
+                                .show()
+                        } else {
+                            val packageName = it.channelItemEntity.packageNameAndroid
+                            val url = it.channelItemEntity.url
+
+                            val intent: Intent =
+                                context?.packageManager?.getLaunchIntentForPackage(packageName)
+                                    ?: Intent(Intent.ACTION_VIEW, Uri.parse(url));
+
+                            startActivity(intent)
+                        }
+                    }
                 }
-
-
             }
-
         })
     }
 

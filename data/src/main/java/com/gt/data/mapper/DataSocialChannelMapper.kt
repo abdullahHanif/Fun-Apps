@@ -1,5 +1,7 @@
 package com.gt.data.mapper
 
+import com.gt.data.model.Channel
+import com.gt.data.model.Social
 import com.gt.data.model.SocialChannelData
 import com.gt.domain.entity.ChannelItemEntity
 import com.gt.domain.entity.SocialChannelEntity
@@ -37,6 +39,19 @@ object DataSocialChannelMapper : Mapper<SocialChannelEntity, SocialChannelData> 
     }
 
     override fun fromDomainToDataType(to: SocialChannelEntity): SocialChannelData {
-        return SocialChannelData()
+        val data = SocialChannelData()
+
+        to.channelEntityList.forEach {
+            data.body.channels.add(
+                Channel(it.iconUrl, it.name, it.packageNameAndroid, it.url)
+            )
+        }
+
+        to.socialEntityList.forEach {
+            data.body.socials.add(Social(it.iconUrl, it.name, it.packageNameAndroid, it.url))
+        }
+
+
+        return data
     }
 }

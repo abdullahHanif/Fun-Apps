@@ -22,22 +22,23 @@
             android:id="@+id/cv_card"
             android:layout_width="match_parent"
             android:layout_height="@dimen/_120sdp"
-            cardview:cardPreventCornerOverlap="false"
-            cardview:cardUseCompatPadding="true"
+            android:background="@android:color/white"
             android:padding="@dimen/_2sdp"
             cardview:cardCornerRadius="6dp"
-            android:background="@android:color/white"
             cardview:cardElevation="2dp"
-            cardview:layout_constraintTop_toTopOf="parent"
-            cardview:layout_constraintBottom_toBottomOf="parent">
+            cardview:cardPreventCornerOverlap="false"
+            cardview:cardUseCompatPadding="true"
+            cardview:layout_constraintBottom_toBottomOf="parent"
+            cardview:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/logo"
-                app:imageUrl="@{model.iconUrl}"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:alpha="@{model.premiumItem ? 0.1f : 1.0f}"
                 android:contentDescription="@string/app_name"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                app:imageUrl="@{model.iconUrl}" />
 
         </androidx.cardview.widget.CardView>
     </com.gt.funapps.components.LoadingConstraintLayout>

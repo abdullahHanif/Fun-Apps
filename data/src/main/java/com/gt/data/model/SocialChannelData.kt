@@ -22,11 +22,11 @@ data class SocialChannelData(
 data class Body(
     @SerializedName("channels")
     @ColumnInfo(name = "channels")
-    var channels: List<Channel> = listOf(),
+    var channels: MutableList<Channel> = mutableListOf(),
 
     @ColumnInfo(name = "socials")
     @SerializedName("socials")
-    var socials: List<Social> = listOf()
+    var socials: MutableList<Social> = mutableListOf()
 ) : Serializable
 
 @Entity
