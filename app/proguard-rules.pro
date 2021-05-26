@@ -19,3 +19,74 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+-dontwarn okio.**
+-dontwarn retrofit2.** # tbd
+-keep class retrofit2.** { *; }
+
+# Retain service method parameters when optimizing.
+-keepclassmembers,allowshrinking,allowobfuscation interface * {
+    @retrofit2.http.* <methods>;
+}
+
+-keepclasseswithmembernames class com.wang.avi.**{ *; }
+
+-keepclassmembers class com.gt.data.model.** {  *;  }
+-keepclassmembers class com.gt.data.repository.** {  *;  }
+-keepclassmembers class com.gt.domain.entity.** {  *;  }
+
+-keepattributes *Annotation*,EnclosingMethod,Signature
+-keepnames class com.google.gson.** { *; }
+
+-assumenosideeffects class android.util.Log {
+    public static boolean isLoggable(java.lang.String, int);
+    public static *** d(...);
+    public static *** v(...);
+    public static *** i(...);
+    public static *** e(...);
+    public static *** w(...);
+    public static *** wtf(...);
+    public static *** LoggerDefault(...);
+}
+
+-assumenosideeffects class java.io.PrintStream {
+     public void println(%);
+     public void println(**);
+ }
+
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
+# Gson specific classes
+-keep class sun.misc.Unsafe { *; }
+
+-keepattributes Signature
+
+# For using GSON @Expose annotation
+-keepattributes *Annotation*
+
+# Gson specific classes
+-dontwarn sun.misc.**
+#-keep class com.google.gson.stream.** { *; }
+
+# Application classes that will be serialized/deserialized over Gson
+-keep class com.google.gson.examples.android.model.** { <fields>; }
+
+# Prevent proguard from stripping interface information from TypeAdapter, TypeAdapterFactory,
+# JsonSerializer, JsonDeserializer instances (so they can be used in @JsonAdapter)
+-keep class * implements com.google.gson.TypeAdapter
+-keep class * implements com.google.gson.TypeAdapterFactory
+-keep class * implements com.google.gson.JsonSerializer
+-keep class * implements com.google.gson.JsonDeserializer
+
+# Prevent R8 from leaving Data object members always null
+-keepclassmembers,allowobfuscation class * {
+  @com.google.gson.annotations.SerializedName <fields>;
+}
+
+#-keep class com.google.gson.stream.** { *; }
+-repackageclasses ''
+
+#printing full config in build so we can analyze obfuscation
+-printconfiguration "build/outputs/mapping/configuration.txt"
+-printmapping "build/outputs/mapping/mapping.txt"

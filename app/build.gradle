@@ -13,6 +13,15 @@ apply {
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
+    signingConfigs {
+        config {
+            storeFile file('D:\\MISC_Android_Projects\\GT_Trails\\key\\funapps.jks')
+            storePassword 'abdullah'
+            keyAlias 'abdullah'
+            keyPassword 'abdullah'
+        }
+    }
+
 
     defaultConfig {
         applicationId "com.gt.funapps"

@@ -29,7 +29,7 @@ class FragmentSocialViewModel @Inject constructor(private val socialChannelUseCa
     private fun fetchSocialList() {
         viewModelScope.launch {
 
-            socialChannelUseCase.fetchSocialDataFlow(true, BuildConfig.APP_TYPE).collect {
+            socialChannelUseCase.fetchSocialDataFlow( BuildConfig.APP_TYPE).collect {
                 list = it
 
                 navEvents.value = BaseEvent(SocialListEvent.HideLoader)

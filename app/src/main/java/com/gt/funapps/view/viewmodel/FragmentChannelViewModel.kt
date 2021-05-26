@@ -29,7 +29,7 @@ class FragmentChannelViewModel @Inject constructor(private val socialChannelUseC
     private fun fetchChannelList() {
         viewModelScope.launch {
 
-            socialChannelUseCase.fetchChannelDataFlow(true, BuildConfig.APP_TYPE).collect {
+            socialChannelUseCase.fetchChannelDataFlow( BuildConfig.APP_TYPE).collect {
                 list = it
 
                 navEvents.value = BaseEvent(ChannelListEvent.HideLoader)

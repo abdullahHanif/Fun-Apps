@@ -16,66 +16,55 @@ class SocialChannelUseCaseImpl @Inject constructor(private val socialChannelRepo
     // then view model will handle presentation logic for it
 
     override fun fetchSocialDataFlow(
-        fetchFromRemote: Boolean,
         appType: String
     ) = flow<List<SocialItemEntity>> {
-
-        if (fetchFromRemote) {
-            //blocking call
-            socialChannelRepository.getSocialChannels().let {
-                when (it) {
-                    is Result.Success -> {
-                        val list = it.data?.socialEntityList
-                        if (appType.equals("FREE", true)) {
-                            //business logic of data manipulations goes here.
-                            list!!.mapIndexed { index, item ->
-                                if (index < 4) {
-                                    item.isPremiumItem = true
-                                }
-                            }.toList()
-                        }
-
-                        emit(list!!)
+        //blocking call
+        socialChannelRepository.getSocialChannels().let {
+            when (it) {
+                is Result.Success -> {
+                    val list = it.data?.socialEntityList
+                    if (appType.equals("FREE", true)) {
+                        //business logic of data manipulations goes here.
+                        list!!.mapIndexed { index, item ->
+                            if (index < 4) {
+                                item.isPremiumItem = true
+                            }
+                        }.toList()
                     }
-                    is Result.Error -> {
 
-                    }
+                    emit(list!!)
+                }
+                is Result.Error -> {
+
                 }
             }
         }
     }.flowOn(Dispatchers.IO)
 
     override fun fetchChannelDataFlow(
-        fetchFromRemote: Boolean,
         appType: String
     ) = flow<List<ChannelItemEntity>> {
+        //blocking call
+        socialChannelRepository.getSocialChannels().let {
+            when (it) {
+                is Result.Success -> {
+                    val list = it.data?.channelEntityList
 
-        if (fetchFromRemote) {
-            //blocking call
-            socialChannelRepository.getSocialChannels().let {
-                when (it) {
-                    is Result.Success -> {
-                        val list = it.data?.channelEntityList
-
-                        if (appType.equals("FREE", true)) {
-                            //business logic of data manipulations goes here.
-                            list!!.mapIndexed { index, item ->
-                                if (index < 4) {
-                                    item.isPremiumItem = true
-                                }
-                            }.toList()
-                        }
-
-                        emit(list!!)
+                    if (appType.equals("FREE", true)) {
+                        //business logic of data manipulations goes here.
+                        list!!.mapIndexed { index, item ->
+                            if (index < 4) {
+                                item.isPremiumItem = true
+                            }
+                        }.toList()
                     }
-                    is Result.Error -> {
 
-                    }
+                    emit(list!!)
+                }
+                is Result.Error -> {
+
                 }
             }
-
         }
-
-
     }.flowOn(Dispatchers.IO)
 }
