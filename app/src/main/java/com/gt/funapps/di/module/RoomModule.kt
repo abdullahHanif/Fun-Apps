@@ -6,6 +6,7 @@ import com.gt.data.db.FunAppsDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
@@ -15,7 +16,7 @@ object RoomModule {
 
     @Singleton
     @Provides
-    fun providesDatabase(context: Context): FunAppsDatabase =
+    fun providesDatabase(@ApplicationContext context: Context): FunAppsDatabase =
         Room.databaseBuilder(context, FunAppsDatabase::class.java, FunAppsDatabase.DATABASE_NAME)
             .fallbackToDestructiveMigration()
             .build()

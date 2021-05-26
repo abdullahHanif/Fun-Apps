@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools">
 
     <data>
-
-        <import type="android.view.View" />
-
         <variable
             name="model"
             type="com.gt.domain.entity.SocialItemEntity" />
@@ -23,27 +21,23 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cv_card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@android:color/transparent"
-            cardview:cardCornerRadius="8dp"
+            android:layout_height="@dimen/_120sdp"
+            cardview:cardPreventCornerOverlap="false"
+            cardview:cardUseCompatPadding="true"
+            android:padding="@dimen/_2sdp"
+            cardview:cardCornerRadius="6dp"
+            android:background="@android:color/white"
             cardview:cardElevation="2dp"
-            cardview:layout_constraintTop_toTopOf="parent">
+            cardview:layout_constraintTop_toTopOf="parent"
+            cardview:layout_constraintBottom_toBottomOf="parent">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <ImageView
+                android:id="@+id/logo"
+                app:imageUrl="@{model.iconUrl}"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_120sdp"
-                android:background="@drawable/ic_netflix">
-
-                <ImageView
-                    android:id="@+id/logo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:contentDescription="@string/app_name"
-                    android:scaleType="centerCrop"
-                    cardview:layout_constraintStart_toStartOf="parent"
-                    cardview:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
+                android:scaleType="centerCrop" />
 
         </androidx.cardview.widget.CardView>
     </com.gt.funapps.components.LoadingConstraintLayout>

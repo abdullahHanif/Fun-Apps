@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.gt.funapps.components.LoadingConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/root_view"
@@ -11,6 +11,19 @@
             android:id="@+id/rv_channel_item"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/NoDataMessage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/no_data_found"
+            android:textSize="@dimen/_14ssp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </com.gt.funapps.components.LoadingConstraintLayout>
 </layout>

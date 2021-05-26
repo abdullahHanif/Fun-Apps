@@ -12,7 +12,7 @@ class ChannelItemListAdapter(val viewmodel: FragmentChannelViewModel) :
     RecyclerView.Adapter<ChannelItemListAdapter.ViewHolder>() {
 
     inner class ViewHolder(val binding: LiChannelItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+        RecyclerView.ViewHolder(binding.rootView)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding: LiChannelItemBinding = DataBindingUtil.inflate(
@@ -25,11 +25,12 @@ class ChannelItemListAdapter(val viewmodel: FragmentChannelViewModel) :
     override fun getItemCount(): Int = viewmodel.list.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.binding.model = viewmodel.list[position]
+        val model = viewmodel.list.get(position)
+        holder.binding.model = model
         holder.binding.viewmodel = viewmodel
 
         holder.binding.rootView.setOnClickListener {
-            viewmodel.onItemClicked(viewmodel.list[position])
+            viewmodel.onItemClicked(model)
         }
 
         holder.binding.executePendingBindings()
